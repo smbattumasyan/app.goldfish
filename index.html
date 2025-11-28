@@ -3,26 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goldfish - AI Assistant | Privacy Policy & Terms of Use</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Goldfish — Terms of Use & Privacy Policy</title>
     <style>
         :root {
-            --primary-gradient: linear-gradient(135deg, #FF6B35 0%, #FF8E53 50%, #FFA366 100%);
-            --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --bg-light: #FAFBFC;
-            --bg-white: #FFFFFF;
-            --text-dark: #1a1a2e;
-            --text-medium: #4a4a68;
-            --text-light: #6b6b8a;
-            --border-color: #e8e8ef;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
-            --radius-sm: 8px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
+            /* Light Mode Colors from color-system.md */
+            --accent: #1F66F0;
+            --accent-secondary: #573DE6;
+            --accent-tertiary: #FA428C;
+            --background: #F2F5FC;
+            --background-raised: #FAFAFF;
+            --surface: #FFFFFF;
+            --surface-secondary: #F7FAFF;
+            --surface-tertiary: #EDF0F7;
+            --text-primary: #0F1426;
+            --text-secondary: #545C70;
+            --text-muted: #8F99AD;
+            --border: rgba(0, 0, 0, 0.08);
+            --border-strong: rgba(0, 0, 0, 0.12);
+            --success: #69B057;
+            --warning: #FAAB33;
+            --error: #D64757;
+            
+            /* Gradients */
+            --gradient-start: #F0F7FF;
+            --gradient-end: #FFFFFF;
+            --cta-start: #1F66F0;
+            --cta-end: #0F4DD1;
         }
 
         * {
@@ -31,874 +37,729 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.7;
-            font-size: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
         }
 
-        /* Header */
-        header {
-            background: var(--bg-white);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-            backdrop-filter: blur(20px);
-            background: rgba(255,255,255,0.95);
-        }
-
-        .header-container {
-            max-width: 1200px;
+        .container {
+            max-width: 800px;
             margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 40px 24px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding: 32px;
+            background: var(--surface);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--text-dark);
+            font-size: 48px;
+            margin-bottom: 16px;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            user-select: none;
         }
 
-        .logo-icon {
-            width: 44px;
-            height: 44px;
-            background: var(--primary-gradient);
-            border-radius: 12px;
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* Ripple effects */
+        .ripple {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.5);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.6);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .ripple-1 { border-width: 3px; }
+        .ripple-2 { border-width: 2.5px; }
+        .ripple-3 { border-width: 2px; }
+
+        /* Outer glow */
+        .logo-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(255, 143, 51, 0.4) 0%,
+                rgba(250, 33, 133, 0.15) 50%,
+                transparent 70%
+            );
+            filter: blur(12px);
+            animation: glowPulse 1.5s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes glowPulse {
+            0% { opacity: 0.4; }
+            100% { opacity: 0.6; }
+        }
+
+        /* Main bubble */
+        .logo-bubble {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FF8F33 0%, #FA2185 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 8px 16px rgba(255, 143, 51, 0.5);
+            animation: float 2.2s ease-in-out infinite alternate, wobble 2.8s ease-in-out infinite alternate;
+            transition: transform 0.15s ease;
         }
 
-        .logo-text {
-            font-size: 22px;
-            font-weight: 700;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .logo-bubble::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
         }
 
-        nav {
-            display: flex;
-            gap: 8px;
+        .logo-bubble::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
         }
 
-        nav a {
-            padding: 10px 20px;
-            text-decoration: none;
-            color: var(--text-medium);
-            font-weight: 500;
-            font-size: 14px;
-            border-radius: var(--radius-sm);
-            transition: all 0.3s ease;
-        }
-
-        nav a:hover, nav a.active {
-            background: var(--primary-gradient);
-            color: white;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 140px 24px 80px;
-            text-align: center;
-            background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%);
-        }
-
-        .hero-icon {
-            width: 100px;
-            height: 100px;
-            background: var(--primary-gradient);
-            border-radius: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
-            margin: 0 auto 32px;
-            box-shadow: 0 12px 40px rgba(255, 107, 53, 0.35);
-            animation: float 3s ease-in-out infinite;
+        .logo-emoji {
+            font-size: 48px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+            transition: transform 0.15s ease;
+            position: relative;
+            z-index: 1;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-6px) scale(1); }
         }
 
-        .hero h1 {
-            font-size: clamp(32px, 5vw, 48px);
-            font-weight: 800;
-            margin-bottom: 16px;
-            background: var(--primary-gradient);
+        @keyframes wobble {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-6px) rotate(3deg); }
+        }
+
+        /* Squish animation on click */
+        .logo-bubble.squish {
+            animation: squishBounce 0.4s ease forwards;
+        }
+
+        .logo-bubble.squish .logo-emoji {
+            animation: emojiSquish 0.4s ease forwards;
+        }
+
+        @keyframes squishBounce {
+            0% { transform: scale(1, 1) translateY(-3px); }
+            15% { transform: scale(1.1, 0.85) translateY(-3px); }
+            30% { transform: scale(0.94, 1.08) translateY(-3px); }
+            50% { transform: scale(1.02, 0.98) translateY(-3px); }
+            100% { transform: scale(1, 1) translateY(-3px); }
+        }
+
+        @keyframes emojiSquish {
+            0% { transform: scale(1); }
+            15% { transform: scale(0.85); }
+            30% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Ripple animation */
+        @keyframes rippleExpand1 {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.6; }
+            100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+        }
+
+        @keyframes rippleExpand2 {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.4; }
+            100% { transform: translate(-50%, -50%) scale(2.0); opacity: 0; }
+        }
+
+        @keyframes rippleExpand3 {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.25; }
+            100% { transform: translate(-50%, -50%) scale(2.2); opacity: 0; }
+        }
+
+        .ripple.animate-1 {
+            animation: rippleExpand1 0.6s ease-out forwards;
+        }
+
+        .ripple.animate-2 {
+            animation: rippleExpand2 0.7s ease-out 0.1s forwards;
+        }
+
+        .ripple.animate-3 {
+            animation: rippleExpand3 0.8s ease-out 0.2s forwards;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--cta-start), var(--cta-end));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: var(--text-medium);
-            max-width: 600px;
-            margin: 0 auto 32px;
-        }
-
-        .hero-badges {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            padding: 8px 16px;
-            background: var(--bg-white);
-            border: 1px solid var(--border-color);
-            border-radius: 50px;
-            font-size: 13px;
-            color: var(--text-medium);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .badge span {
-            font-size: 16px;
-        }
-
-        /* Main Content */
-        main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px 80px;
-        }
-
-        /* Section Cards */
-        .section-card {
-            background: var(--bg-white);
-            border-radius: var(--radius-lg);
-            padding: 48px;
-            margin-bottom: 32px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-        }
-
-        .section-card h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .section-card h2 span {
-            font-size: 32px;
-        }
-
-        .effective-date {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-bottom: 32px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .section-card h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin: 32px 0 16px;
-            color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .section-card h3::before {
-            content: '';
-            width: 4px;
-            height: 24px;
-            background: var(--primary-gradient);
-            border-radius: 2px;
-        }
-
-        .section-card p {
-            color: var(--text-medium);
             margin-bottom: 16px;
         }
 
-        .section-card ul {
-            list-style: none;
-            margin: 16px 0;
-        }
-
-        .section-card ul li {
-            position: relative;
-            padding-left: 28px;
-            margin-bottom: 12px;
-            color: var(--text-medium);
-        }
-
-        .section-card ul li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #FF6B35;
-            font-weight: 600;
-        }
-
-        /* Info Box */
-        .info-box {
-            background: linear-gradient(135deg, #fff5f0 0%, #fff9f5 100%);
-            border: 1px solid #ffe0d0;
-            border-radius: var(--radius-md);
-            padding: 24px;
-            margin: 24px 0;
-        }
-
-        .info-box.blue {
-            background: linear-gradient(135deg, #f0f5ff 0%, #f5f8ff 100%);
-            border-color: #d0e0ff;
-        }
-
-        .info-box h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .info-box p, .info-box ul {
+        .meta {
+            color: var(--text-secondary);
             font-size: 14px;
         }
 
-        /* Subscription Terms */
-        .subscription-terms {
-            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
-            color: white;
-            border-radius: var(--radius-lg);
-            padding: 48px;
-            margin: 48px 0;
+        .meta p {
+            margin: 4px 0;
         }
 
-        .subscription-terms h3 {
-            color: white;
-            font-size: 24px;
-            margin-bottom: 24px;
-        }
-
-        .subscription-terms h3::before {
-            background: var(--primary-gradient);
-        }
-
-        .terms-grid {
-            display: grid;
-            gap: 16px;
-        }
-
-        .term-item {
-            background: rgba(255,255,255,0.08);
-            border-radius: var(--radius-md);
-            padding: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .term-item p {
-            color: rgba(255,255,255,0.85);
-            font-size: 14px;
-            margin: 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .term-item p span {
-            color: #FF8E53;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        /* Pricing Cards */
-        .pricing-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-            margin: 32px 0;
-        }
-
-        .pricing-card {
-            background: var(--bg-white);
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .pricing-card.featured {
-            border-color: #FF6B35;
-            position: relative;
-            transform: scale(1.02);
-        }
-
-        .pricing-card.featured::before {
-            content: 'BEST VALUE';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary-gradient);
-            color: white;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 4px 16px;
-            border-radius: 20px;
-        }
-
-        .pricing-card h4 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .pricing-card .price {
-            font-size: 36px;
-            font-weight: 800;
-            color: #FF6B35;
-        }
-
-        .pricing-card .period {
-            font-size: 14px;
-            color: var(--text-light);
-        }
-
-        .pricing-card .savings {
-            font-size: 13px;
-            color: #22c55e;
-            font-weight: 500;
-            margin-top: 8px;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            background: var(--primary-gradient);
-            border-radius: var(--radius-lg);
-            padding: 48px;
-            text-align: center;
-            color: white;
-        }
-
-        .contact-section h3 {
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-
-        .contact-section h3::before {
-            display: none;
-        }
-
-        .contact-section p {
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 24px;
-        }
-
-        .contact-email {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255,255,255,0.2);
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: 600;
-            color: white;
+        .meta a {
+            color: var(--accent);
             text-decoration: none;
-            transition: all 0.3s ease;
         }
 
-        .contact-email:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
+        .meta a:hover {
+            text-decoration: underline;
         }
 
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: rgba(255,255,255,0.7);
-            padding: 48px 24px;
-            text-align: center;
+        nav {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
-        .footer-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-
-        .footer-logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary-gradient);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        .footer-logo-text {
-            font-size: 20px;
-            font-weight: 700;
-            color: white;
-        }
-
-        .footer-links {
+        nav ul {
             display: flex;
             justify-content: center;
             gap: 32px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
+            list-style: none;
         }
 
-        .footer-links a {
-            color: rgba(255,255,255,0.7);
+        nav a {
+            color: var(--text-secondary);
             text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--accent);
+            background: var(--surface-secondary);
+        }
+
+        section {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--cta-start), var(--cta-end));
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 24px 0 12px;
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin: 16px 0 8px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+
+        ul {
+            margin: 12px 0 16px 24px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: var(--surface-secondary);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .highlight-box p {
+            margin: 0;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, var(--cta-start), var(--cta-end));
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .contact-box p {
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .contact-box a {
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px;
+            color: var(--text-muted);
             font-size: 14px;
-            transition: color 0.3s ease;
         }
 
-        .footer-links a:hover {
-            color: #FF8E53;
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
         }
 
-        .footer-divider {
-            width: 60px;
-            height: 2px;
-            background: var(--primary-gradient);
-            margin: 24px auto;
-            border-radius: 1px;
-        }
-
-        .copyright {
-            font-size: 13px;
-            color: rgba(255,255,255,0.5);
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 24px 0;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            header {
+                padding: 24px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            nav ul {
                 gap: 16px;
             }
 
-            nav {
-                flex-wrap: wrap;
-                justify-content: center;
+            nav a {
+                font-size: 14px;
+                padding: 6px 12px;
             }
 
-            .section-card {
-                padding: 32px 24px;
+            section {
+                padding: 24px 20px;
             }
-
-            .subscription-terms {
-                padding: 32px 24px;
-            }
-
-            .hero {
-                padding: 120px 24px 60px;
-            }
-
-            .pricing-card.featured {
-                transform: scale(1);
-            }
-        }
-
-        /* Scroll to top button */
-        .scroll-top {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 48px;
-            height: 48px;
-            background: var(--primary-gradient);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            box-shadow: var(--shadow-lg);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 999;
-        }
-
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-top:hover {
-            transform: translateY(-4px);
-        }
-
-        /* Table of Contents */
-        .toc {
-            background: var(--bg-light);
-            border-radius: var(--radius-md);
-            padding: 24px;
-            margin-bottom: 32px;
-        }
-
-        .toc h4 {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-
-        .toc-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 8px;
-        }
-
-        .toc-list a {
-            color: var(--text-medium);
-            text-decoration: none;
-            font-size: 14px;
-            padding: 8px 12px;
-            border-radius: var(--radius-sm);
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .toc-list a:hover {
-            background: var(--bg-white);
-            color: #FF6B35;
-        }
-
-        .toc-list a span {
-            font-size: 12px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <a href="#" class="logo">
-                <div class="logo-icon">🐠</div>
-                <span class="logo-text">Goldfish</span>
-            </a>
-            <nav>
-                <a href="#privacy" class="active">Privacy Policy</a>
-                <a href="#terms">Terms of Use</a>
-                <a href="#subscription">Subscription</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="hero-icon">🐠</div>
-        <h1>Goldfish - AI Assistant</h1>
-        <p>Your intelligent AI companion. Read our Privacy Policy and Terms of Use to understand how we protect your data and what you agree to when using our app.</p>
-        <div class="hero-badges">
-            <div class="badge"><span>🔒</span> Secure & Private</div>
-            <div class="badge"><span>🤖</span> AI Powered</div>
-            <div class="badge"><span>⚡</span> Fast Responses</div>
-            <div class="badge"><span>📱</span> iOS App</div>
-        </div>
-    </section>
-
-    <main>
-        <!-- Privacy Policy Section -->
-        <section id="privacy" class="section-card">
-            <h2><span>🔐</span> Privacy Policy</h2>
-            <p class="effective-date">Effective Date: October 23, 2025 • STumTech</p>
-
-            <div class="toc">
-                <h4>Quick Navigation</h4>
-                <div class="toc-list">
-                    <a href="#data-collection"><span>📊</span> Data Collection</a>
-                    <a href="#data-usage"><span>🔧</span> How We Use Data</a>
-                    <a href="#data-sharing"><span>🤝</span> Data Sharing</a>
-                    <a href="#data-security"><span>🛡️</span> Data Security</a>
-                    <a href="#your-rights"><span>✨</span> Your Rights</a>
-                    <a href="#children"><span>👶</span> Children's Privacy</a>
+    <div class="container">
+        <header>
+            <div class="logo-container" onclick="triggerWaterDrop()">
+                <div class="ripple ripple-1" id="ripple1"></div>
+                <div class="ripple ripple-2" id="ripple2"></div>
+                <div class="ripple ripple-3" id="ripple3"></div>
+                <div class="logo-glow"></div>
+                <div class="logo-bubble" id="logoBubble">
+                    <span class="logo-emoji">🐠</span>
                 </div>
             </div>
-
-            <h3 id="data-collection">1. Information We Collect</h3>
-            <p>When you use Goldfish, we may collect the following types of information:</p>
-            <ul>
-                <li><strong>Usage Data:</strong> Information about how you interact with the app, including features used and session duration</li>
-                <li><strong>Device Information:</strong> Device type, operating system version, and unique device identifiers</li>
-                <li><strong>Conversation Data:</strong> Messages you send to the AI assistant to provide responses</li>
-                <li><strong>Purchase Information:</strong> Transaction data for subscription purchases (processed through Apple)</li>
-            </ul>
-
-            <div class="info-box">
-                <h4>🔒 Your Privacy Matters</h4>
-                <p>We collect only the minimum information necessary to provide and improve our services. Your conversations are processed to generate AI responses but are not used for advertising purposes.</p>
+            <h1>Goldfish — Terms of Use & Privacy Policy</h1>
+            <div class="meta">
+                <p><strong>Effective Date:</strong> December 1, 2025</p>
+                <p><strong>App Name:</strong> Goldfish - AI Assistant</p>
+                <p><strong>Developer:</strong> Smbat Tumasyan</p>
+                <p><strong>Contact:</strong> <a href="mailto:smbattumasyan@gmail.com">smbattumasyan@gmail.com</a></p>
             </div>
+        </header>
 
-            <h3 id="data-usage">2. How We Use Your Information</h3>
-            <p>We use the collected information to:</p>
+        <nav>
             <ul>
-                <li>Provide and maintain the AI assistant service</li>
-                <li>Process your subscription and manage your account</li>
-                <li>Improve and optimize app performance and features</li>
-                <li>Send important updates about the service</li>
-                <li>Respond to your support requests</li>
-                <li>Comply with legal obligations</li>
+                <li><a href="#terms" class="active">Terms of Use</a></li>
+                <li><a href="#privacy">Privacy Policy</a></li>
             </ul>
-
-            <h3 id="data-sharing">3. Data Sharing & Third Parties</h3>
-            <p>Goldfish uses trusted third-party services to provide our features:</p>
-            <ul>
-                <li><strong>OpenAI:</strong> Powers our AI assistant capabilities</li>
-                <li><strong>Firebase:</strong> Provides analytics and crash reporting</li>
-                <li><strong>Apple:</strong> Processes all subscription payments securely</li>
-            </ul>
-
-            <div class="info-box blue">
-                <h4>ℹ️ Third-Party Services</h4>
-                <p>These services have their own privacy policies. We encourage you to review them. We do not sell your personal information to advertisers or data brokers.</p>
-            </div>
-
-            <h3 id="data-security">4. Data Security</h3>
-            <p>We implement appropriate security measures to protect your information:</p>
-            <ul>
-                <li>Encrypted data transmission using industry-standard protocols</li>
-                <li>Secure storage with access controls</li>
-                <li>Regular security assessments and updates</li>
-                <li>Limited employee access to user data</li>
-            </ul>
-
-            <h3 id="your-rights">5. Your Rights & Choices</h3>
-            <p>You have the following rights regarding your data:</p>
-            <ul>
-                <li><strong>Access:</strong> Request a copy of your personal data</li>
-                <li><strong>Deletion:</strong> Request deletion of your data</li>
-                <li><strong>Correction:</strong> Request correction of inaccurate data</li>
-                <li><strong>Opt-out:</strong> Opt out of non-essential data collection</li>
-            </ul>
-
-            <h3 id="children">6. Children's Privacy</h3>
-            <p>Goldfish is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal data, please contact us immediately.</p>
-
-            <h3>7. Changes to Privacy Policy</h3>
-            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy in the app and updating the "Effective Date" at the top.</p>
-        </section>
+        </nav>
 
         <!-- Terms of Use Section -->
-        <section id="terms" class="section-card">
-            <h2><span>📜</span> Terms of Use</h2>
-            <p class="effective-date">Effective Date: October 23, 2025 • App Name: Goldfish • Company: STumTech</p>
+        <section id="terms">
+            <h2>Terms of Use</h2>
 
             <h3>1. Acceptance of Terms</h3>
             <p>By downloading, accessing, or using Goldfish ("the App"), you agree to be bound by these Terms of Use. If you do not agree, do not use the App.</p>
 
+            <hr>
+
             <h3>2. Use of the App</h3>
-            <ul>
-                <li>Goldfish is provided for personal, non-commercial use unless otherwise authorized by STumTech</li>
-                <li>You agree not to misuse, reverse engineer, modify, or disrupt the App or its services</li>
-                <li>You must comply with all applicable laws while using the App</li>
-            </ul>
+            <p>Goldfish is provided for personal, non-commercial use unless otherwise authorized by the Developer.</p>
+            <p>You agree not to misuse, reverse engineer, modify, or disrupt the App or its services.</p>
+            <p>You must comply with all applicable laws while using the App.</p>
+
+            <hr>
 
             <h3>3. AI-Generated Content</h3>
-            <div class="info-box">
-                <h4>⚠️ Important Notice</h4>
-                <p>Responses generated by the AI Assistant are for informational and entertainment purposes only. STumTech is not responsible for the accuracy, reliability, or outcome of actions taken based on AI-generated content. You agree not to use AI outputs for harmful, illegal, or abusive purposes.</p>
-            </div>
+            <p>Responses generated by the AI Assistant are for informational and entertainment purposes only.</p>
+            <p>The Developer is not responsible for the accuracy, reliability, or outcomes of actions taken based on AI-generated content.</p>
+            <p>You agree not to use AI outputs for harmful, illegal, or abusive purposes.</p>
+
+            <hr>
 
             <h3>4. User Responsibilities</h3>
             <p>You agree to:</p>
             <ul>
-                <li>Provide accurate information when interacting with the App</li>
-                <li>Not engage in harmful activities such as spamming, harassment, data scraping, or attempting unauthorized access</li>
-                <li>Use the App only in a lawful and ethical manner</li>
+                <li>Provide accurate information when interacting with the App.</li>
+                <li>Not engage in harmful activities, such as spamming, harassment, data scraping, or unauthorized access.</li>
+                <li>Use the App only in a lawful and ethical manner.</li>
             </ul>
+
+            <hr>
 
             <h3>5. Intellectual Property</h3>
-            <ul>
-                <li>All content, design, branding, code, and functionality of Goldfish are the intellectual property of STumTech</li>
-                <li>You are granted a limited, non-exclusive, non-transferable license to use the App</li>
-                <li>You may not copy, reproduce, distribute, or create derivative works without written consent</li>
-            </ul>
+            <p>All content, design, branding, code, and functionality of Goldfish are the intellectual property of the Developer.</p>
+            <p>You are granted a limited, non-exclusive, non-transferable license to use the App.</p>
+            <p>You may not copy, reproduce, or create derivative works without written permission.</p>
+
+            <hr>
 
             <h3>6. Third-Party Services</h3>
-            <p>Goldfish uses third-party providers such as OpenAI and Firebase. By using the App, you acknowledge that these services may process certain data as described in their own terms and policies. STumTech is not responsible for third-party actions or service outages.</p>
+            <p>Goldfish uses third-party providers such as OpenAI and Firebase.</p>
+            <p>These services may process certain data according to their own terms and policies.</p>
+            <p>The Developer is not responsible for third-party actions or outages.</p>
 
-            <h3>7. Termination</h3>
-            <p>STumTech may suspend or terminate access to the App at any time if:</p>
+            <hr>
+
+            <h3>7. Subscription and Payments (If Applicable)</h3>
+            <p>If the App offers premium features or subscriptions:</p>
             <ul>
-                <li>You violate these Terms</li>
-                <li>The App is discontinued</li>
-                <li>Required by law</li>
+                <li>Payments are processed via App Store systems.</li>
+                <li>Apple's billing and refund policies apply.</li>
+                <li>The Developer does not directly manage payment information.</li>
+            </ul>
+
+            <hr>
+
+            <h3>8. Termination</h3>
+            <p>The Developer may suspend or terminate access if:</p>
+            <ul>
+                <li>You violate these Terms,</li>
+                <li>The App is discontinued,</li>
+                <li>Required by law.</li>
             </ul>
             <p>You may stop using the App at any time.</p>
 
-            <h3>8. Disclaimer of Warranties</h3>
-            <p>The App is provided "as is" and "as available." STumTech makes no warranties that:</p>
+            <hr>
+
+            <h3>9. Disclaimer of Warranties</h3>
+            <div class="highlight-box">
+                <p>The App is provided "as is" and "as available."</p>
+            </div>
+            <p>The Developer does not guarantee:</p>
             <ul>
-                <li>The App will be error-free, uninterrupted, or fully secure</li>
-                <li>AI-generated responses will always be accurate or suitable for your needs</li>
+                <li>Error-free, uninterrupted, or fully secure operation.</li>
+                <li>The accuracy or suitability of AI-generated responses.</li>
             </ul>
 
-            <h3>9. Limitation of Liability</h3>
-            <p>To the fullest extent permitted by law, STumTech is not liable for:</p>
+            <hr>
+
+            <h3>10. Limitation of Liability</h3>
+            <p>To the fullest extent permitted by law, the Developer is not liable for:</p>
             <ul>
-                <li>Damages arising from your use or inability to use the App</li>
-                <li>Errors in AI responses</li>
-                <li>Data loss, interruptions, or third-party system failures</li>
+                <li>Damages from using or being unable to use the App,</li>
+                <li>AI response errors,</li>
+                <li>Data loss, interruptions, or third‑party failures.</li>
             </ul>
             <p>Your sole remedy is to stop using the App.</p>
 
-            <h3>10. Changes to Terms</h3>
-            <p>We may update these Terms of Use at any time. The latest version will always be available within the App or on our official website. Continued use of the App means you accept the updated Terms.</p>
+            <hr>
 
-            <h3>11. Governing Law</h3>
-            <p>These Terms are governed by the laws of the Republic of Armenia, unless otherwise required by your local jurisdiction.</p>
+            <h3>11. Changes to Terms</h3>
+            <p>These Terms may be updated at any time. The latest version will be available in the App or on the official website.</p>
+            <p>Continued use constitutes acceptance of updated Terms.</p>
+
+            <hr>
+
+            <h3>12. Governing Law</h3>
+            <p>These Terms are governed by the laws of the Republic of Armenia unless otherwise required by your jurisdiction.</p>
+
+            <hr>
+
+            <h3>13. Contact Information</h3>
+            <p>📧 <a href="mailto:smbattumasyan@gmail.com">smbattumasyan@gmail.com</a></p>
         </section>
 
-        <!-- Subscription Section -->
-        <section id="subscription" class="section-card" style="display: none;">
-            <div class="pricing-cards" style="display: none;">
+        <!-- Privacy Policy Section -->
+        <section id="privacy">
+            <h2>Privacy Policy</h2>
 
-        <div class="subscription-terms">
-            <h3>📋 Subscription Terms</h3>
-            <div class="terms-grid">
-                <div class="term-item">
-                    <p><span>💳</span> Payment will be charged to your iTunes Account at confirmation of purchase</p>
-                </div>
-                <div class="term-item">
-                    <p><span>🔄</span> Subscription automatically renews unless auto-renew is turned off at least 24 hours before the end of the current period</p>
-                </div>
-                <div class="term-item">
-                    <p><span>📅</span> Your account will be charged for renewal within 24 hours prior to the end of the current period at the rate of your selected plan</p>
-                </div>
-                <div class="term-item">
-                    <p><span>⚙️</span> Subscriptions may be managed by the user and auto-renewal may be turned off by going to Account Settings after purchase</p>
-                </div>
-                <div class="term-item">
-                    <p><span>🎁</span> Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription</p>
-                </div>
-            </div>
-        </div>
+            <h3>1. Introduction</h3>
+            <p>This Privacy Policy explains how Goldfish ("the App") collects, uses, and protects your personal data in compliance with GDPR, CCPA, and other applicable laws.</p>
+            <p>By using Goldfish, you agree to the data practices described here.</p>
 
-        <section class="section-card">
-            <h3>How to Cancel Your Subscription</h3>
-            <p>To cancel your Goldfish subscription:</p>
+            <hr>
+
+            <h3>2. Information We Collect</h3>
+            
+            <h4>2.1 Automatically Collected Data</h4>
+            <p>Collected through Firebase Analytics and Crashlytics:</p>
             <ul>
-                <li>Open iPhone Settings</li>
-                <li>Tap your name at the top</li>
-                <li>Tap Subscriptions</li>
-                <li>Select Goldfish</li>
-                <li>Tap Cancel Subscription</li>
+                <li>Device model, OS version, identifiers</li>
+                <li>Usage statistics</li>
+                <li>Crash logs</li>
+                <li>Interaction data (features used, time spent)</li>
             </ul>
 
-            <div class="info-box blue">
-                <h4>💡 Restore Purchases</h4>
-                <p>If you've previously subscribed and need to restore your purchase, use the "Restore Purchases" option in the app. This is useful when switching devices or reinstalling the app.</p>
+            <h4>2.2 AI Processing Data</h4>
+            <p>When you interact with the AI Assistant:</p>
+            <ul>
+                <li>Your prompts are sent to OpenAI to generate responses.</li>
+                <li>The Developer does not store your conversations.</li>
+                <li>OpenAI may retain anonymized data as stated in its policies.</li>
+            </ul>
+
+            <h4>2.3 Optional Data</h4>
+            <p>If you contact support, we may receive:</p>
+            <ul>
+                <li>Your email address</li>
+                <li>Any voluntary information you provide</li>
+            </ul>
+
+            <hr>
+
+            <h3>3. How We Use Your Information</h3>
+            <p>We use data to:</p>
+            <ul>
+                <li>Improve and personalize the App</li>
+                <li>Diagnose crashes and performance issues</li>
+                <li>Analyze usage trends</li>
+                <li>Fulfill legal obligations</li>
+                <li>Provide support when requested</li>
+            </ul>
+
+            <hr>
+
+            <h3>4. Data Sharing and Disclosure</h3>
+            <div class="highlight-box">
+                <p>We do <strong>not</strong> sell or trade personal information.</p>
             </div>
+            <p>We may share limited data with:</p>
+            <ul>
+                <li><strong>Firebase</strong> (analytics & crash reporting)</li>
+                <li><strong>OpenAI</strong> (AI processing)</li>
+                <li><strong>Legal authorities</strong>, if required by law</li>
+            </ul>
+            <p>All partners must comply with secure data-handling standards.</p>
+
+            <hr>
+
+            <h3>5. Data Retention</h3>
+            <ul>
+                <li>Firebase retains analytics data according to Google's policies.</li>
+                <li>AI prompts are temporarily processed and not stored by the Developer.</li>
+                <li>Support emails are kept only as long as needed.</li>
+            </ul>
+
+            <hr>
+
+            <h3>6. Security</h3>
+            <p>We use technical and organizational measures to protect your data, but no system is absolutely secure.</p>
+
+            <hr>
+
+            <h3>7. Your Rights</h3>
+            <p>Depending on your location, you may:</p>
+            <ul>
+                <li>Request access to your data</li>
+                <li>Request correction or deletion</li>
+                <li>Withdraw consent</li>
+                <li>Request processing restrictions</li>
+            </ul>
+            <p>To exercise rights, contact: <strong><a href="mailto:smbattumasyan@gmail.com">smbattumasyan@gmail.com</a></strong></p>
+
+            <hr>
+
+            <h3>8. Children's Privacy</h3>
+            <p>Goldfish is not intended for children under 13.</p>
+            <p>We do not knowingly collect data from children.</p>
+
+            <hr>
+
+            <h3>9. International Data Transfers</h3>
+            <p>Your data may be processed in countries with different privacy laws, including the United States.</p>
+            <p>We use appropriate safeguards to ensure compliance.</p>
+
+            <hr>
+
+            <h3>10. Updates to This Policy</h3>
+            <p>Updates may occur periodically. Continued use of the App means you accept the updated Policy.</p>
+
+            <hr>
+
+            <h3>11. Contact Us</h3>
+            <p>📧 <a href="mailto:smbattumasyan@gmail.com">smbattumasyan@gmail.com</a></p>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section">
-            <h3>📧 Contact Us</h3>
-            <p>Have questions about our Privacy Policy, Terms of Use, or need support?<br>We're here to help!</p>
-            <a href="mailto:stumtech.supprt@gmail.com" class="contact-email">
-                📬 stumtech.supprt@gmail.com
-            </a>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">
-                <div class="footer-logo-icon">🐠</div>
-                <span class="footer-logo-text">Goldfish</span>
-            </div>
-            <div class="footer-links">
-                <a href="#privacy">Privacy Policy</a>
-                <a href="#terms">Terms of Use</a>
-                <a href="#subscription">Subscription</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="footer-divider"></div>
-            <p class="copyright">© 2025 STumTech. All rights reserved.<br>Goldfish - AI Assistant</p>
-        </div>
-    </footer>
-
-    <button class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+        <footer>
+            <p>© 2025 Goldfish. All rights reserved.</p>
+            <p>Made with ❤️ by <a href="mailto:smbattumasyan@gmail.com">Smbat Tumasyan</a></p>
+        </footer>
+    </div>
 
     <script>
-        // Scroll to top button visibility
-        window.addEventListener('scroll', function() {
-            const scrollTop = document.querySelector('.scroll-top');
-            if (window.pageYOffset > 300) {
-                scrollTop.classList.add('visible');
-            } else {
-                scrollTop.classList.remove('visible');
-            }
-        });
+        // Water drop animation for logo
+        function triggerWaterDrop() {
+            const bubble = document.getElementById('logoBubble');
+            const ripple1 = document.getElementById('ripple1');
+            const ripple2 = document.getElementById('ripple2');
+            const ripple3 = document.getElementById('ripple3');
 
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            // Reset animations
+            bubble.classList.remove('squish');
+            ripple1.classList.remove('animate-1');
+            ripple2.classList.remove('animate-2');
+            ripple3.classList.remove('animate-3');
+
+            // Force reflow to restart animations
+            void bubble.offsetWidth;
+            void ripple1.offsetWidth;
+            void ripple2.offsetWidth;
+            void ripple3.offsetWidth;
+
+            // Trigger squish animation
+            bubble.classList.add('squish');
+
+            // Trigger ripple animations
+            ripple1.classList.add('animate-1');
+            ripple2.classList.add('animate-2');
+            ripple3.classList.add('animate-3');
+
+            // Remove squish class after animation completes
+            setTimeout(() => {
+                bubble.classList.remove('squish');
+            }, 400);
+
+            // Remove ripple classes after animations complete
+            setTimeout(() => {
+                ripple1.classList.remove('animate-1');
+                ripple2.classList.remove('animate-2');
+                ripple3.classList.remove('animate-3');
+            }, 1000);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const headerOffset = 100;
-                    const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                // Update active state
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Smooth scroll
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             });
         });
 
         // Update active nav link on scroll
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('nav a');
             
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
+                if (scrollY >= sectionTop - 200) {
                     current = section.getAttribute('id');
                 }
             });
